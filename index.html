@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Search</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>Student Search</h2>
+
+    <input
+      type="text"
+      id="searchBox"
+      placeholder="Search by name or roll number"
+      aria-label="Search students"
+    />
+
+    <ul id="studentList">
+      <li>101 - Ramesh</li>
+      <li>102 - Suresh</li>
+      <li>103 - Raju</li>
+      <li>104 - Rahul</li>
+      <li>105 - Abhishek</li>
+    </ul>
+  </div>
+
+  <script>
+    const searchBox = document.getElementById("searchBox");
+    const listItems = document.getElementById("studentList").getElementsByTagName("li");
+
+    searchBox.addEventListener("keyup", () => {
+      const text = searchBox.value.toLowerCase().trim();
+      for (const item of listItems) {
+        const content = item.textContent.toLowerCase();
+        item.style.display = content.includes(text) ? "" : "none";
+      }
+    });
+  </script>
+</body>
+</html>
